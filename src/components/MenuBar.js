@@ -1,38 +1,45 @@
-import React from 'react'
+import React, {Component} from 'react'
 
-const MenuBar = (props) => {
+export default class MenuBar extends Component {
+  handleClick = e => {
+    this.props.onMenuChange(e.target.id)
+  }
 
-  /*
+  render() {
+    return (
+      <div className="ui four item menu">
+        <a 
+          id="profile" 
+          className={this.props.active === "profile"?"item active":"item"} 
+          onClick={(e)=>this.handleClick(e)}
+        >
+          <i className="user large icon" id="profile"/>
+        </a>
 
-  The 'a' tags below are the menu items. Think about the way a menu 
-  should work. When you click a menu item, the button typically becomes
-  'active' to indicate that it is currently selected. How could we achieve
-  this programatically? What other behavior do we expect when we click
-  on a menu item? Do we need state in this component, and if not, how can
-  this component be made aware of what is currently the active menu item?
+        <a 
+          id="photo" 
+          className={this.props.active === "photo"?"item active":"item"} 
+          onClick={(e)=>this.handleClick(e)}
+        >
+          <i className="photo large icon" id="photo"/>
+        </a>
 
-  */
+        <a 
+          id="cocktail" 
+          className={this.props.active === "cocktail"?"item active":"item"} 
+          onClick={(e)=>this.handleClick(e)}
+        >
+          <i className="cocktail large icon" id="cocktail"/>
+        </a>
 
-  return (
-    <div className="ui four item menu">
-      <a className="item active" id="profile">
-        <i className="user large icon" id="profile"/>
-      </a>
-
-      <a className="item" id="photo">
-        <i className="photo large icon" id="photo"/>
-      </a>
-
-      <a className="item" id="cocktail">
-        <i className="cocktail large icon" id="cocktail"/>
-      </a>
-
-      <a className="item" id="pokemon"> 
-        <i className=" themeisle large icon" id="pokemon"/>
-      </a>
-    </div>
-  )
-
+        <a 
+          id="pokemon" 
+          className={this.props.active === "pokemon"?"item active":"item"} 
+          onClick={(e)=>this.handleClick(e)}
+        > 
+          <i className=" themeisle large icon" id="pokemon"/>
+        </a>
+      </div>
+    )
+  }
 }
-
-export default MenuBar
